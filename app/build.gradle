@@ -1,0 +1,77 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.google.gms.google.services)
+}
+
+android {
+    namespace "com.example.facefit"
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.example.facefit"
+        minSdk 24
+        targetSdk 36
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures{
+        viewBinding true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+}
+
+dependencies {
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    implementation libs.androidx.activity
+    implementation libs.androidx.constraintlayout
+    implementation libs.firebase.auth
+    implementation libs.androidx.credentials
+    implementation libs.androidx.credentials.play.services.auth
+    implementation libs.googleid
+    implementation libs.firebase.firestore
+    implementation libs.firebase.database
+    implementation libs.play.services.vision
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+
+
+    //cameraX core library
+
+    implementation libs.androidx.camera.core
+    implementation libs.androidx.camera.camera2
+    implementation libs.androidx.camera.lifecycle
+
+    // CameraX View (contains PreviewView)
+    implementation libs.androidx.camera.view
+
+    // Optional: CameraX Extensions (for HDR, Night mode, etc.)
+    implementation libs.androidx.camera.extensions
+
+    //I will add ml dependency
+
+    implementation("com.google.mlkit:face-detection:16.1.7")
+
+    //you can add dependency for process camera provider
+
+    implementation("com.google.guava:guava:31.1-android")
+
+}
